@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sentient Wall</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/jpeg" href="/img/sentient-logo.jpeg" />
+</head>
+<body>
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <span class="theme-icon">🌙</span>
+    <span class="theme-text">Dark</span>
+  </button>
+
+  <div class="wrap">
+    <h1>Sentient Wall</h1>
+    <p>Immortalize your X profile on the Sentient Wall.</p>
+
+    <form id="form" class="controls" autocomplete="off">
+      <input
+        id="handle"
+        name="handle"
+        type="text"
+        inputmode="text"
+        placeholder="@username"
+        aria-label="X username"
+        required
+        autocapitalize="none"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button id="submitBtn" type="submit">Submit</button>
+    </form>
+
+
+    <div id="msg" class="msg"></div>
+    <p class="wait-notice">Your profile will appear on the wall within one minute of submitting.</p>
+    <p class="creator-credit">Created by <a href="https://x.com/AnonfrXBT" target="_blank" rel="noopener" class="creator-link">@AnonfrXBT</a></p>
+    <div class="stage">
+      <section id="wall" aria-live="polite"></section>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

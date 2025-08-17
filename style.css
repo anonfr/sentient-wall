@@ -1,0 +1,339 @@
+:root {
+  /* Light mode */
+  --sentient-bg: #ffffff;
+  --sentient-ink: #000000;
+  --sentient-muted: #555555;
+  --sentient-border: #eeeeee;
+  --sentient-card-bg: #f9f9f9;
+  --sentient-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+  /* AMOLED Dark mode */
+  --sentient-bg: #000000;
+  --sentient-ink: #ffffff;
+  --sentient-muted: #aaaaaa;
+  --sentient-border: #222222;
+  --sentient-card-bg: #111111;
+  --sentient-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Page */
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--sentient-bg);
+  /* Mobile viewport fixes */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: var(--sentient-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial;
+  background: var(--sentient-bg);
+  /* Prevent ALL scrolling */
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  /* Mobile safe area */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Ensure full coverage in dark mode */
+[data-theme="dark"] html {
+  background: #000000 !important;
+}
+
+[data-theme="dark"] body {
+  background: #000000 !important;
+}
+
+/* Center the heading + subtext */
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 16px 20px;
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--sentient-bg);
+}
+
+[data-theme="dark"] .wrap {
+  background: #000000 !important;
+}
+
+/* Title */
+h1 {
+  margin: 0 0 10px;
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  color: var(--sentient-ink);
+}
+
+/* Subtitle under title */
+.lead {
+  margin: 0 0 25px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sentient-muted);
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 12px auto 10px;
+  max-width: 420px;
+}
+
+.controls input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  outline: none;
+  background: var(--sentient-card-bg);
+  color: var(--sentient-ink);
+  border: 1px solid var(--sentient-border);
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.controls input:focus {
+  border-color: var(--sentient-ink);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .controls input:focus {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.controls button {
+  padding: 11px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: var(--sentient-ink);
+  color: var(--sentient-bg);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.controls button:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.msg {
+  min-height: 1.2em;
+  font-size: 0.9rem;
+  color: #c00;
+}
+
+[data-theme="dark"] .msg {
+  color: #ff6b6b;
+}
+
+.wait-notice {
+  font-size: 0.8rem;
+  color: var(--sentient-muted);
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 8px;
+}
+
+.creator-credit {
+  font-size: 0.75rem;
+  color: var(--sentient-muted);
+  text-align: center;
+  margin: 0 0 15px;
+  font-weight: 500;
+}
+
+.creator-link {
+  color: var(--sentient-ink);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.creator-link:hover {
+  opacity: 0.7;
+}
+
+/* ===== Dynamic container ===== */
+.stage {
+  position: relative;
+  border-radius: 18px;
+  padding: 18px;
+  border: 1px solid var(--sentient-border);
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 280px);
+  min-height: 60vh;
+  background: var(--sentient-bg);
+}
+
+#wall,
+.card {
+  position: relative;
+  z-index: 1;
+}
+
+/* Free‑floating area size */
+#wall {
+  position: relative;
+  height: auto;
+  min-height: 420px;
+}
+
+/* Cards */
+.card {
+  position: absolute;
+  display: block;
+  width: 118px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--sentient-ink);
+  background: var(--sentient-card-bg);
+  border: 1px solid var(--sentient-border);
+  overflow: hidden;
+  box-shadow: var(--sentient-shadow);
+  will-change: transform;
+}
+
+.pfp {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: var(--sentient-border);
+  overflow: hidden;
+}
+
+.pfp img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.caption {
+  padding: 6px 8px;
+  background: transparent;
+}
+
+.handle {
+  display: block;
+  font-weight: 900;
+  padding: 4px 6px;
+  background: var(--sentient-border);
+  border: 1px solid var(--sentient-border);
+  border-radius: 8px;
+  color: var(--sentient-ink);
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--sentient-card-bg);
+  border: 1px solid var(--sentient-border);
+  border-radius: 50px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sentient-ink);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: var(--sentient-shadow);
+}
+
+.theme-icon {
+  font-size: 16px;
+}
+
+/* Mobile responsive for theme toggle */
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 4px 8px;
+    font-size: 11px;
+    border-radius: 20px;
+  }
+  
+  .theme-icon {
+    font-size: 12px;
+  }
+  
+  .theme-text {
+    display: none;
+  }
+  
+  .wrap {
+    margin-top: 0;
+    padding: calc(50px + env(safe-area-inset-top)) 12px env(safe-area-inset-bottom);
+    background: var(--sentient-bg) !important;
+  }
+  
+  [data-theme="dark"] .wrap {
+    background: #000000 !important;
+  }
+  
+  .stage {
+    max-height: calc(100vh - 350px);
+    min-height: 300px;
+  }
+  
+  .card {
+    width: 90px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+  }
+  
+  .wait-notice, .creator-credit {
+    font-size: 0.7rem;
+    margin-bottom: 5px;
+  }
+}
+
+/* Removed credit styles */
+
+/* Motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .stage::before,
+  .stage::after {
+    animation: none !important;
+  }
+}
+
