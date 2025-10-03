@@ -175,7 +175,7 @@ h1 {
   opacity: 0.7;
 }
 
-/* ===== Dynamic container ===== */
+/* ===== Dynamic container here i guess ===== */
 .stage {
   position: relative;
   border-radius: 18px;
@@ -194,7 +194,7 @@ h1 {
   z-index: 1;
 }
 
-/* Free‑floating area size */
+/* Free‑floating area size great */
 #wall {
   position: relative;
   height: auto;
