@@ -22,7 +22,7 @@
   box-sizing: border-box;
 }
 
-/* Page */
+/* Page more*/
 html {
   height: 100%;
   margin: 0;
@@ -45,7 +45,7 @@ body {
   overflow: hidden;
   overscroll-behavior: none;
   -webkit-overflow-scrolling: touch;
-  /* Mobile safe area */
+  /* Mobile safe area why */
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
 }
